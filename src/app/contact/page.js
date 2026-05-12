@@ -5,52 +5,98 @@ import Footer from "../../components/Footer";
 import { content } from "../../data/content";
 import { useLanguage } from "../../context/LanguageContext";
 import { useSearchParams } from "next/navigation";
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, useState } from "react";
 
 function ContactContent() {
+
   const { lang, setLang } = useLanguage();
   const params = useSearchParams();
 
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+
   useEffect(() => {
+
     const urlLang = params.get("lang");
+
     if (urlLang && (urlLang === "tr" || urlLang === "en")) {
       setLang(urlLang);
     }
+
   }, [params]);
 
   const t = content[lang];
 
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = () => {
+
+    const subject =
+      lang === "en"
+        ? "New Contact Form Message"
+        : "Yeni İletişim Formu Mesajı";
+
+    const body = `
+${lang === "en" ? "Full Name" : "Ad Soyad"}: ${form.name}
+
+${lang === "en" ? "Phone" : "Telefon"}: ${form.phone}
+
+Email: ${form.email}
+
+${lang === "en" ? "Message" : "Mesaj"}:
+${form.message}
+    `;
+
+    window.location.href =
+      `mailto:info@symicapital.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
-    <main className="text-white min-h-screen px-6 md:px-12 lg:px-24">
+    <main className="text-white min-h-screen px-6 md:px-12 lg:px-24 overflow-hidden">
 
       <Navbar />
 
-      <section className="pt-32 pb-24 max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+      <section className="pt-44 md:pt-40 pb-24 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start scroll-mt-32">
 
         {/* LEFT */}
         <div className="space-y-6">
 
-          <h1 className="text-4xl font-bold text-red-500">
+          <h1 className="text-5xl font-bold text-red-500 mb-10">
             {lang === "en" ? "Contact Us" : "İletişim"}
           </h1>
 
-          <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-            <p className="text-gray-300">{t.contact.address}</p>
+          <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+            <p className="text-gray-300 leading-8">
+              {t.contact.address}
+            </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-            <p>{t.contact.phone}</p>
+          <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+            <p className="text-lg">
+              0551 101 77 33
+            </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-            <p>{t.contact.email}</p>
+          <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
+            <p className="text-lg">
+              info@symicapital.com
+            </p>
           </div>
 
-          <div className="rounded-xl overflow-hidden">
+          <div className="rounded-2xl overflow-hidden border border-white/10">
             <iframe
               src="https://www.google.com/maps?q=İçerenköy,+Topçu+İbrahim+Sk,+Ataşehir,+İstanbul&output=embed"
               width="100%"
-              height="250"
+              height="340"
               style={{ border: 0 }}
               loading="lazy"
             ></iframe>
@@ -59,34 +105,57 @@ function ContactContent() {
         </div>
 
         {/* RIGHT */}
-        <div className="flex flex-col gap-4 justify-center">
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md mt-[86px]">
 
-          <input
-            type="text"
-            placeholder={lang === "en" ? "Full Name" : "Ad Soyad"}
-            className="p-4 bg-white/5 border border-white/10 rounded-lg"
-          />
+          <h2 className="text-3xl font-bold text-red-500 mb-8">
+            {lang === "en" ? "Get In Touch" : "Bize Ulaşın"}
+          </h2>
 
-          <input
-            type="text"
-            placeholder={lang === "en" ? "Phone Number" : "Telefon"}
-            className="p-4 bg-white/5 border border-white/10 rounded-lg"
-          />
+          <div className="flex flex-col gap-5">
 
-          <input
-            type="email"
-            placeholder={lang === "en" ? "Email Address" : "Email"}
-            className="p-4 bg-white/5 border border-white/10 rounded-lg"
-          />
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder={lang === "en" ? "Full Name" : "Ad Soyad"}
+              className="p-5 bg-[#1B3358] border border-white/10 rounded-xl outline-none focus:border-red-500 transition"
+            />
 
-          <textarea
-            placeholder={lang === "en" ? "Your Message" : "Mesajınız"}
-            className="p-4 bg-white/5 border border-white/10 rounded-lg h-32"
-          />
+            <input
+              type="text"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder={lang === "en" ? "Phone Number" : "Telefon"}
+              className="p-5 bg-[#1B3358] border border-white/10 rounded-xl outline-none focus:border-red-500 transition"
+            />
 
-          <button className="bg-red-600 py-4 rounded-lg font-semibold">
-            {lang === "en" ? "Send Message" : "Gönder"}
-          </button>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder={lang === "en" ? "Email Address" : "Email"}
+              className="p-5 bg-[#1B3358] border border-white/10 rounded-xl outline-none focus:border-red-500 transition"
+            />
+
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              placeholder={lang === "en" ? "Your Message" : "Mesajınız"}
+              className="p-5 bg-[#1B3358] border border-white/10 rounded-xl h-40 outline-none focus:border-red-500 transition resize-none"
+            />
+
+            <button
+              onClick={handleSubmit}
+              className="bg-red-600 hover:bg-red-700 transition py-5 rounded-xl font-semibold text-lg shadow-lg shadow-red-600/20"
+            >
+              {lang === "en" ? "Send Message" : "Gönder"}
+            </button>
+
+          </div>
 
         </div>
 

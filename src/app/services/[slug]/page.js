@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import { content } from "../../../data/content";
@@ -8,19 +9,33 @@ import { content } from "../../../data/content";
 export default function ServiceDetail() {
 
   const { slug } = useParams();
-  const params = useSearchParams();
 
-  // 🔥 SADECE URL
-  let lang = params.get("lang");
+  const searchParams = useSearchParams();
 
-  // fallback
-  if (lang !== "tr" && lang !== "en") {
-    lang = "en";
-  }
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+
+    const currentLang = searchParams.get("lang");
+
+    if (currentLang === "tr") {
+      setLang("tr");
+    } else {
+      setLang("en");
+    }
+
+  }, [searchParams]);
 
   const t = content[lang];
 
-  const keys = ["ma", "investment", "corporate", "partnership", "advisory"];
+  const keys = [
+    "ma",
+    "investment",
+    "corporate",
+    "partnership",
+    "advisory"
+  ];
+
   const index = keys.indexOf(slug);
 
   return (
@@ -31,18 +46,20 @@ export default function ServiceDetail() {
       <section className="pt-32 pb-24 max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
 
         <div>
-          <h1 className="text-4xl font-bold text-red-500 mb-6">
+
+          <h1 className="text-5xl font-bold text-red-500 mb-8 leading-tight">
             {index !== -1 ? t.services[index] : ""}
           </h1>
 
-          <p className="text-gray-300">
+          <p className="text-gray-300 text-lg leading-9">
             {t.servicesDetail[slug]}
           </p>
+
         </div>
 
         <img
           src={`/services/${slug}.jpg`}
-          className="rounded-xl h-[400px] object-cover"
+          className="rounded-2xl h-[450px] w-full object-cover border border-white/10"
         />
 
       </section>

@@ -33,32 +33,35 @@ export default function Home() {
   ];
 
   return (
-    <main className="text-white min-h-screen px-6 md:px-12 lg:px-24 relative">
+    <main className="text-white min-h-screen px-6 md:px-12 lg:px-24 relative overflow-hidden">
 
       <div className="mouse-glow" style={{ left: mouse.x, top: mouse.y }} />
 
       <Navbar />
 
       {/* HERO */}
-      <section id="home" className="flex flex-col items-center justify-center text-center min-h-[80vh]">
+      <section
+        id="home"
+        className="flex flex-col items-center justify-center text-center min-h-screen pt-32 pb-20 scroll-mt-24"
+      >
 
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-bold"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
         >
           {ui.heroTop}
           <br />
           <span className="text-red-600">{ui.heroBottom}</span>
         </motion.h1>
 
-        <p className="mt-6 text-gray-300 max-w-xl">
+        <p className="mt-6 text-gray-300 max-w-xl text-base md:text-lg leading-8">
           {ui.heroDesc}
         </p>
 
         <button
           onClick={() => router.push(`/contact?lang=${lang}`)}
-          className="mt-8 px-6 py-3 border border-white rounded-full hover:bg-red-600"
+          className="mt-8 px-8 py-4 border border-white rounded-full hover:bg-red-600 transition duration-300"
         >
           {lang === "en" ? "Contact Us" : "İletişime Geç"}
         </button>
@@ -66,13 +69,18 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-24 max-w-6xl mx-auto scroll-mt-32">
+      <section
+        id="about"
+        className="py-24 max-w-6xl mx-auto scroll-mt-24"
+      >
 
-        <h2 className="text-3xl font-bold text-red-500 mb-10">
-          {lang === "en" ? "About SYMI Consulting" : "SYMI Consulting Hakkında"}
+        <h2 className="text-3xl md:text-4xl font-bold text-red-500 mb-10">
+          {lang === "en"
+            ? "About SYMI Consulting"
+            : "SYMI Consulting Hakkında"}
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-10 text-gray-300">
+        <div className="grid md:grid-cols-2 gap-10 text-gray-300 leading-8">
           {t.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -81,13 +89,16 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-24 max-w-6xl mx-auto scroll-mt-32">
+      <section
+        id="services"
+        className="py-24 max-w-7xl mx-auto scroll-mt-24"
+      >
 
-        <h2 className="text-3xl font-bold text-red-500 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-red-500 mb-14 text-center">
           {lang === "en" ? "Our Services" : "Hizmetlerimiz"}
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
           {services.map((item, i) => (
             <div
@@ -96,14 +107,14 @@ export default function Home() {
               className="group block cursor-pointer"
             >
 
-              <div className="overflow-hidden rounded-xl">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
                 <img
                   src={item.img}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition"
+                  className="w-full h-72 object-cover group-hover:scale-110 transition duration-500"
                 />
               </div>
 
-              <h3 className="mt-4 font-semibold group-hover:text-red-500">
+              <h3 className="mt-5 text-lg font-semibold text-white group-hover:text-red-500 transition leading-8">
                 {item.title}
               </h3>
 

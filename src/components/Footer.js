@@ -1,103 +1,142 @@
 "use client";
 
 import { Mail, Phone } from "lucide-react";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaXTwitter
+} from "react-icons/fa6";
+
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../data/content";
 
 export default function Footer() {
+
+  const { lang } = useLanguage();
+  const ui = content.ui[lang];
+
   return (
-    <footer className="mt-24 border-t border-white/10 relative overflow-hidden">
+    <footer className="relative w-full border-t border-white/10 bg-[#173765] overflow-hidden">
 
-      {/* glow background */}
-      <div className="absolute w-[500px] h-[500px] bg-red-600/10 blur-3xl top-[-100px] left-[-100px]"></div>
+      {/* Glow */}
+      <div className="absolute w-[400px] h-[400px] bg-red-600/10 blur-3xl -top-32 -left-32"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16 grid md:grid-cols-3 gap-10 relative z-10">
+      <div className="w-full px-8 md:px-16 lg:px-24 py-12 relative z-10">
 
-        {/* LOGO BOX */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white/5 border border-white/10 rounded-xl p-8 text-center hover:border-red-500 transition transform hover:scale-95"
-        >
-          <div className="bg-white p-3 rounded-md inline-block mb-6 shadow-lg">
-            <img src="/logo.png" className="h-16 mx-auto" />
-          </div>
+        {/* 3 COLUMN */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
 
-          <p className="text-gray-300 text-sm leading-relaxed">
-            Strategic Financial Advisory & Growth Solutions
-          </p>
-        </motion.div>
-
-        {/* NAVIGATION BOX */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-red-500 transition transform hover:scale-95"
-        >
-          <h3 className="text-red-500 font-semibold mb-6 text-lg">
-            Navigation
-          </h3>
-
-          <ul className="space-y-4 text-gray-300 text-sm">
-
-            {[
-              { name: "Home", link: "/#home" },
-              { name: "About", link: "/#about" },
-              { name: "Services", link: "/#services" },
-              { name: "Contact", link: "/contact" }
-            ].map((item, i) => (
-              <li key={i}>
-                <a
-                  href={item.link}
-                  className="flex items-center gap-2 hover:text-white transition group"
-                >
-                  <span className="w-2 h-2 bg-red-500 rounded-full group-hover:scale-125 transition"></span>
-                  {item.name}
-                </a>
-              </li>
-            ))}
-
-          </ul>
-        </motion.div>
-
-        {/* CONTACT BOX */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-red-500 transition transform hover:scale-95"
-        >
-          <h3 className="text-red-500 font-semibold mb-6 text-lg">
-            Contact
-          </h3>
-
-          <div className="space-y-5 text-gray-300 text-sm">
-
-            <div className="flex items-center gap-3 group">
-              <Mail className="text-red-500 w-5 h-5 group-hover:scale-110 transition" />
-              <span className="group-hover:text-white transition">
-                info@symi.tr
-              </span>
+          {/* LOGO */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center backdrop-blur-md hover:border-red-500/40 transition"
+          >
+            <div className="bg-white p-4 rounded-xl inline-block shadow-xl mb-5">
+              <img src="/logo.png" className="h-16 mx-auto" />
             </div>
 
-            <div className="flex items-center gap-3 group">
-              <Phone className="text-red-500 w-5 h-5 group-hover:scale-110 transition" />
-              <span className="group-hover:text-white transition">
-                0216 384 01 33
-              </span>
+            <p className="text-gray-300 leading-7 text-sm">
+              Strategic Financial Advisory & Growth Solutions
+            </p>
+          </motion.div>
+
+          {/* NAVIGATION */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md hover:border-red-500/40 transition"
+          >
+            <h3 className="text-red-500 text-xl font-semibold mb-6">
+              {lang === "tr" ? "Navigasyon" : "Navigation"}
+            </h3>
+
+            <ul className="space-y-4 text-gray-300">
+
+              {[
+                { name: ui.nav.home, link: "/#home" },
+                { name: ui.nav.about, link: "/#about" },
+                { name: ui.nav.services, link: "/#services" },
+                { name: ui.nav.contact, link: "/contact" }
+              ].map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.link}
+                    className="flex items-center gap-3 hover:text-white transition"
+                  >
+                    <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+
+            </ul>
+          </motion.div>
+
+          {/* CONTACT */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md hover:border-red-500/40 transition"
+          >
+            <h3 className="text-red-500 text-xl font-semibold mb-6">
+              {lang === "tr" ? "İletişim" : "Contact"}
+            </h3>
+
+            <div className="space-y-5 text-gray-300">
+
+              <div className="flex items-center gap-4">
+                <Mail className="text-red-500 w-5 h-5" />
+                <span>info@symicapital.com</span>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <Phone className="text-red-500 w-5 h-5" />
+                <span>0551 101 77 33</span>
+              </div>
+
             </div>
 
-          </div>
-        </motion.div>
+            {/* SOCIAL MEDIA */}
+            <div className="flex gap-4 mt-8">
+
+              <a
+                href="#"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 hover:scale-110 transition duration-300"
+              >
+                <FaInstagram size={18} />
+              </a>
+
+              <a
+                href="#"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 hover:scale-110 transition duration-300"
+              >
+                <FaXTwitter size={18} />
+              </a>
+
+              <a
+                href="#"
+                className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 hover:scale-110 transition duration-300"
+              >
+                <FaLinkedinIn size={18} />
+              </a>
+
+            </div>
+
+          </motion.div>
+
+        </div>
+
+        {/* ALT */}
+        <div className="w-full border-t border-white/10 mt-10 pt-6 text-center text-gray-400 text-sm">
+          © {new Date().getFullYear()} SYMI Capital. All rights reserved.
+        </div>
 
       </div>
-
-      {/* ALT */}
-      <div className="text-center text-gray-500 text-sm pb-6 relative z-10">
-        © {new Date().getFullYear()} SYMI Consulting. All rights reserved.
-      </div>
-
     </footer>
   );
 }

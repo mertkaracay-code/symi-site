@@ -2,29 +2,95 @@
 
 /* RENKLER */
 :root {
-  --primary: #0B1F3A; /* lacivert */
-  --accent: #D7262E;  /* kırmızı */
+  --primary-dark: #06142d;
+  --primary: #0d2347;
+  --primary-light: #173765;
+
+  --accent: #ff0000;
+  --accent-soft: #ff1e1e;
+
+  --text: #ffffff;
 }
 
-/* BODY */
-body {
-  background: #0B1F3A; /* ASIL LACİVERT */
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-}
-
+/* GENEL */
 html {
   scroll-behavior: smooth;
 }
 
-/* mouse glow */
+body {
+  background: linear-gradient(
+    180deg,
+    #06142d 0%,
+    #0d2347 45%,
+    #173765 100%
+  );
+
+  color: var(--text);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  overflow-x: hidden;
+
+  min-height: 100vh;
+}
+
+/* Mouse Glow */
 .mouse-glow {
   position: fixed;
+
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(215,38,46,0.15) 0%, transparent 70%);
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.12) 0%,
+    transparent 70%
+  );
+
   pointer-events: none;
+
   transform: translate(-50%, -50%);
+
   z-index: 0;
+}
+
+/* Navbar */
+nav {
+  background: rgba(6, 20, 45, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Menü Yazıları */
+nav a {
+  color: white;
+  transition: 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff0000;
+}
+
+/* Kartlar */
+.card,
+footer > div {
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.3s ease;
+}
+
+.card:hover,
+footer > div:hover {
+  border-color: rgba(255,0,0,0.4);
+
+  transform: translateY(-3px);
+}
+
+/* Başlık kırmızıları */
+.red-text {
+  color: #ff0000;
 }
