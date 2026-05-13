@@ -10,7 +10,7 @@ export const content = {
       },
       heroTop: "Strategic Financial",
       heroBottom: "Advisory & Growth",
-      heroDesc: "SYMI Consulting provides investment advisory, M&A services and corporate finance solutions for sustainable growth."
+      heroDesc: "SYMI Capital provides investment advisory, M&A services and corporate finance solutions for sustainable growth."
     },
     tr: {
       nav: {
@@ -21,19 +21,19 @@ export const content = {
       },
       heroTop: "Stratejik Finansal",
       heroBottom: "Danışmanlık & Büyüme",
-      heroDesc: "SYMI Consulting, sürdürülebilir büyüme için yatırım danışmanlığı, birleşme & satın alma ve kurumsal finans çözümleri sunar."
+      heroDesc: "SYMI Capital, sürdürülebilir büyüme için yatırım danışmanlığı, birleşme & satın alma ve kurumsal finans çözümleri sunar."
     }
   },
 
   en: {
     about: [
-      `SYMI Consulting is an Istanbul-based advisory firm built on a strong foundation of expertise in banking, auditing, and finance. With a shareholder structure and management team originating from these core disciplines, the firm combines deep industry knowledge with an extensive professional network to deliver strategic value to its clients.`,
+      `SYMI Capital is an Istanbul-based consulting firm founded in 2010 on a solid foundation of expertise in banking, auditing, and finance. With a shareholder base and management team drawn from these core disciplines, the company combines deep industry knowledge with a broad professional network to deliver strategic value to its clients.`,
 
-      `Our firm acts as a bridge between domestic and international investors and entrepreneurial companies, facilitating efficient communication, transparent information flow, and strategic collaboration. By connecting capital with opportunity, SYMI Consulting supports businesses in unlocking growth and investment potential.`,
+      `Our firm acts as a bridge between domestic and international investors and entrepreneurial companies, facilitating efficient communication, transparent information flow, and strategic collaboration. By connecting capital with opportunity, SYMI Capital supports businesses in unlocking growth and investment potential.`,
 
-      `Backed by an experienced team and a network of international partners, SYMI Consulting provides specialized advisory services in investment advisory, mergers & acquisitions (M&A), and corporate finance. We help companies and investors navigate complex financial environments, structure strategic partnerships, and execute high-impact transactions.`,
+      `Backed by an experienced team and a network of international partners, SYMI Capital provides specialized advisory services in investment advisory, mergers & acquisitions (M&A), and corporate finance. We help companies and investors navigate complex financial environments, structure strategic partnerships, and execute high-impact transactions.`,
 
-      `With a dynamic, solution-oriented, and client-focused approach, SYMI Consulting aims to create long-term value for investors, companies, and institutions.`
+      `With a dynamic, solution-oriented, and client-focused approach, SYMI Capital aims to create long-term value for investors, companies, and institutions.`
     ],
 
     services: [
@@ -61,13 +61,13 @@ export const content = {
 
   tr: {
     about: [
-      `SYMI Consulting, bankacılık, denetim ve finans alanlarından gelen güçlü bir ortaklık yapısı ve deneyimli kadrosu ile faaliyet gösteren İstanbul merkezli bir danışmanlık şirketidir. Şirketimiz, derin sektör bilgisi ve geniş profesyonel ağı sayesinde müşterilerine stratejik değer sunmayı amaçlamaktadır.`,
+      `SYMI Capital, bankacılık, denetim ve finans alanlarındaki sağlam uzmanlık temeli üzerine 2010 yılında kurulmuş, İstanbul merkezli bir danışmanlık şirketidir. Bu temel disiplinlerden gelen hissedar yapısı ve yönetim ekibiyle şirket, derin sektör bilgisini geniş bir profesyonel ağla birleştirerek müşterilerine stratejik değer sunmaktadır.`,
 
-      `SYMI Consulting, yerli ve yabancı yatırımcılar ile girişimci şirketler arasında bir köprü görevi görerek etkin iletişim, şeffaf bilgi akışı ve stratejik iş birliklerinin kurulmasına katkı sağlar. Sermaye ile fırsatları buluşturarak şirketlerin büyüme ve yatırım potansiyelini ortaya çıkarmayı hedefler.`,
+      `SYMI Capital, yerli ve yabancı yatırımcılar ile girişimci şirketler arasında bir köprü görevi görerek etkin iletişim, şeffaf bilgi akışı ve stratejik iş birliklerinin kurulmasına katkı sağlar. Sermaye ile fırsatları buluşturarak şirketlerin büyüme ve yatırım potansiyelini ortaya çıkarmayı hedefler.`,
 
-      `Deneyimli ekibi ve uluslararası iş ortaklarıyla birlikte SYMI Consulting; yatırım danışmanlığı, birleşme ve satın alma (M&A) danışmanlığı ve kurumsal finans alanlarında uzmanlaşmış hizmetler sunmaktadır. Şirketimiz, yatırımcıların ve şirketlerin karmaşık finansal süreçleri yönetmelerine, stratejik ortaklıklar kurmalarına ve önemli işlemleri başarıyla gerçekleştirmelerine destek olur.`,
+      `Deneyimli ekibi ve uluslararası iş ortaklarıyla birlikte SYMI Capital; yatırım danışmanlığı, birleşme ve satın alma (M&A) danışmanlığı ve kurumsal finans alanlarında uzmanlaşmış hizmetler sunmaktadır. Şirketimiz, yatırımcıların ve şirketlerin karmaşık finansal süreçleri yönetmelerine, stratejik ortaklıklar kurmalarına ve önemli işlemleri başarıyla gerçekleştirmelerine destek olur.`,
 
-      `Dinamik, çözüm odaklı ve müşteri merkezli yaklaşımıyla SYMI Consulting, yatırımcılar ve kurumlar için uzun vadeli değer yaratmayı hedeflemektedir.`
+      `Dinamik, çözüm odaklı ve müşteri merkezli yaklaşımıyla SYMI Capital, yatırımcılar ve kurumlar için uzun vadeli değer yaratmayı hedeflemektedir.`
     ],
 
     services: [

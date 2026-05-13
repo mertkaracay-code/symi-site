@@ -76,8 +76,8 @@ export default function Home() {
 
         <h2 className="text-3xl md:text-4xl font-bold text-red-500 mb-10">
           {lang === "en"
-            ? "About SYMI Consulting"
-            : "SYMI Consulting Hakkında"}
+            ? "About SYMI Capital"
+            : "SYMI Capital Hakkında"}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10 text-gray-300 leading-8">

@@ -65,9 +65,12 @@ export default function Navbar() {
         {/* LOGO */}
         <div
           onClick={goHome}
-          className="bg-white/95 px-2 py-1 rounded-xl shadow-2xl cursor-pointer hover:scale-105 transition duration-300"
+          className="bg-white/95 px-[2px] py-[2px] rounded-[34px] shadow-2xl cursor-pointer hover:scale-105 transition duration-300 overflow-hidden"
         >
-          <img src="/logo.png" className="h-14 md:h-16" />
+          <img
+            src="/logo.png"
+            className="h-24 md:h-28 object-contain scale-110"
+          />
         </div>
 
         {/* DESKTOP MENU */}

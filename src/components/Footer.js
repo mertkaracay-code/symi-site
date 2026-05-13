@@ -105,14 +105,18 @@ export default function Footer() {
             <div className="flex gap-4 mt-8">
 
               <a
-                href="#"
+                href="https://www.instagram.com/symicomtr1?igsh=cGthbXFwdWF3OHRs"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 hover:scale-110 transition duration-300"
               >
                 <FaInstagram size={18} />
               </a>
 
               <a
-                href="#"
+                href="https://x.com/symicomtr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 hover:scale-110 transition duration-300"
               >
                 <FaXTwitter size={18} />

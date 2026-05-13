@@ -12,6 +12,8 @@ function ContactContent() {
   const { lang, setLang } = useLanguage();
   const params = useSearchParams();
 
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -38,26 +40,69 @@ function ContactContent() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
 
-    const subject =
-      lang === "en"
-        ? "New Contact Form Message"
-        : "Yeni İletişim Formu Mesajı";
+    e.preventDefault();
 
-    const body = `
-${lang === "en" ? "Full Name" : "Ad Soyad"}: ${form.name}
+    setLoading(true);
 
-${lang === "en" ? "Phone" : "Telefon"}: ${form.phone}
+    try {
 
-Email: ${form.email}
+      const response = await fetch("https://formsubmit.co/ajax/info@symicapital.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          message: form.message,
+          _subject:
+            lang === "en"
+              ? "New Contact Form Message"
+              : "Yeni İletişim Formu Mesajı"
+        })
+      });
 
-${lang === "en" ? "Message" : "Mesaj"}:
-${form.message}
-    `;
+      if (response.ok) {
 
-    window.location.href =
-      `mailto:info@symicapital.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        alert(
+          lang === "en"
+            ? "Message sent successfully."
+            : "Mesaj başarıyla gönderildi."
+        );
+
+        setForm({
+          name: "",
+          phone: "",
+          email: "",
+          message: ""
+        });
+
+      } else {
+
+        alert(
+          lang === "en"
+            ? "An error occurred."
+            : "Bir hata oluştu."
+        );
+
+      }
+
+    } catch (error) {
+
+      alert(
+        lang === "en"
+          ? "An error occurred."
+          : "Bir hata oluştu."
+      );
+
+    }
+
+    setLoading(false);
+
   };
 
   return (
@@ -65,7 +110,7 @@ ${form.message}
 
       <Navbar />
 
-      <section className="pt-44 md:pt-40 pb-24 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start scroll-mt-32">
+      <section className="pt-64 md:pt-48 pb-24 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start scroll-mt-32">
 
         {/* LEFT */}
         <div className="space-y-6">
@@ -111,11 +156,15 @@ ${form.message}
             {lang === "en" ? "Get In Touch" : "Bize Ulaşın"}
           </h2>
 
-          <div className="flex flex-col gap-5">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-5"
+          >
 
             <input
               type="text"
               name="name"
+              required
               value={form.name}
               onChange={handleChange}
               placeholder={lang === "en" ? "Full Name" : "Ad Soyad"}
@@ -125,6 +174,7 @@ ${form.message}
             <input
               type="text"
               name="phone"
+              required
               value={form.phone}
               onChange={handleChange}
               placeholder={lang === "en" ? "Phone Number" : "Telefon"}
@@ -134,6 +184,7 @@ ${form.message}
             <input
               type="email"
               name="email"
+              required
               value={form.email}
               onChange={handleChange}
               placeholder={lang === "en" ? "Email Address" : "Email"}
@@ -142,6 +193,7 @@ ${form.message}
 
             <textarea
               name="message"
+              required
               value={form.message}
               onChange={handleChange}
               placeholder={lang === "en" ? "Your Message" : "Mesajınız"}
@@ -149,13 +201,16 @@ ${form.message}
             />
 
             <button
-              onClick={handleSubmit}
-              className="bg-red-600 hover:bg-red-700 transition py-5 rounded-xl font-semibold text-lg shadow-lg shadow-red-600/20"
+              type="submit"
+              disabled={loading}
+              className="bg-red-600 hover:bg-red-700 transition py-5 rounded-xl font-semibold text-lg shadow-lg shadow-red-600/20 disabled:opacity-50"
             >
-              {lang === "en" ? "Send Message" : "Gönder"}
+              {loading
+                ? (lang === "en" ? "Sending..." : "Gönderiliyor...")
+                : (lang === "en" ? "Send Message" : "Gönder")}
             </button>
 
-          </div>
+          </form>
 
         </div>
 
